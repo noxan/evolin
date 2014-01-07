@@ -7,5 +7,9 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
 
+    @property
+    def full_name(self):
+        return '%s/%s' % (self.owner, self.name)
+
     def __str__(self):
         return self.full_name
