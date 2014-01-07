@@ -28,6 +28,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+INTERNAL_APPS = (
+    'evolin.projects',
+    'evolin.issues',
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -36,7 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-)
+) + INTERNAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
