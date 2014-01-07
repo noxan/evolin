@@ -13,3 +13,7 @@ class Issue(models.Model):
 
     def __str__(self):
         return '#%d - %s' % (self.number, self.title)
+
+    class Meta:
+        ordering = ['project', 'number']
+        unique_together = (('project', 'number'),)
