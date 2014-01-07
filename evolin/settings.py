@@ -33,6 +33,10 @@ INTERNAL_APPS = (
     'evolin.issues',
 )
 
+EXTERNAL_APPS = (
+    'tastypie',
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-) + INTERNAL_APPS
+) + EXTERNAL_APPS + INTERNAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
