@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INTERNAL_APPS = (
+    'evolin.common',
     'evolin.projects',
     'evolin.issues',
 )
