@@ -36,6 +36,7 @@ INTERNAL_APPS = (
 
 EXTERNAL_APPS = (
     'tastypie',
+    'pipeline',
 )
 
 INSTALLED_APPS = (
