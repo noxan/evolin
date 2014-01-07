@@ -91,6 +91,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+PIPELINE_COMPILERS = (
+    'pipeline.compilers.coffee.CoffeeScriptCompiler',
+)
+
+PIPELINE_JS = {
+    'app': {
+        'source_filenames': (
+            'js/*.coffee',
+        ),
+        'output_filename': 'js/app.js',
+    }
+}
 
 # API
 TASTYPIE_DEFAULT_FORMATS = ['json']
