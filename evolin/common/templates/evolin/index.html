@@ -4,18 +4,5 @@
 <div class="page-header">
   <h1>Issues</h1>
 </div>
-{% verbatim %}
-<table ng-controller="IssueCtrl">
-  <thead>
-    <th>Title</th>
-    <th>State</th>
-  </thead>
-  <tbody>
-    <tr ng-repeat="issue in issues">
-      <td>{{issue.title}}</td>
-      <td>{{issue.state}}</td>
-    </tr>
-  </tbody>
-</table>
-{% endverbatim %}
+<div ng-view></div>
 {% endblock %}
