@@ -1,9 +1,11 @@
 {% load compressed %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" ng-app>
   <head>
     <meta charset="UTF-8">
     <title>evolin</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
   </head>
   <body>
     {% block content %}{% endblock %}
