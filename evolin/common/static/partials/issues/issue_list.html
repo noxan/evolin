@@ -1,0 +1,17 @@
+Search: <input ng-model="query">
+<table>
+  <thead>
+    <th>#</th>
+    <th>Title</th>
+    <th>Project</th>
+    <th>State</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="issue in issues | filter:query">
+      <td>{{issue.number}}</td>
+      <td><a href="#/issues/{{issue.number}}">{{issue.title}}</a></td>
+      <td>{{issue.project}}</td>
+      <td><span class="badge">{{issue.state}}</span></td>
+    </tr>
+  </tbody>
+</table>

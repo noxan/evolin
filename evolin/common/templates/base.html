@@ -1,7 +1,7 @@
 {% load compressed %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app='evolinApp'>
   <head>
     <meta charset="UTF-8">
     <title>evolin</title>
@@ -11,6 +11,8 @@
     {% block content %}{% endblock %}
     {% block javascript %}
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
     {% compressed_js 'app' %}
     {% endblock %}
   </body>

@@ -11,9 +11,10 @@ class IssueStateResource(ModelResource):
 
 class IssueResource(ModelResource):
     def dehydrate(self, bundle):
-        bundle.data['state'] = bundle.obj.state.name.lower()
+        bundle.data['state'] = bundle.obj.state.name
+        bundle.data['project'] = bundle.obj.project.full_name
         return bundle
 
     class Meta:
         queryset = Issue.objects.all()
-        resource_name = 'issue'
+        resource_name = 'issues'
