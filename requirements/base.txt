@@ -2,3 +2,4 @@ django
 django-pipeline
 django-tastypie
 pygithub
+https://github.com/noxan/django-bootstrap-static-files/archive/master.tar.gz
