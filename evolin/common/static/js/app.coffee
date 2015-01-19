@@ -8,6 +8,16 @@ tastypieTransformer = ($http) ->
       return result
   ])
 
+@services.factory 'Project', ['$http', '$resource', ($http, $resource) ->
+  $resource '/api/v1/projects/:projectId/', {},
+    query:
+      cache : true
+      method: 'GET'
+      transformResponse: tastypieTransformer($http)
+      isArray: true
+      params:
+        projectId: ''
+]
 
 @services.factory 'Issue', ['$http', '$resource', ($http, $resource) ->
   $resource '/api/v1/issues/:issueId/', {},
@@ -28,8 +38,11 @@ tastypieTransformer = ($http) ->
 
 @app.config ['$routeProvider', ($routeProvider) ->
   $routeProvider.when('/',
-    templateUrl: ''
-    controller: ''
+    templateUrl: '/static/partials/common/index.html'
+    controller: 'IndexCtrl'
+  ).when('/projects',
+    templateUrl: '/static/partials/projects/project_list.html'
+    controller: 'ProjectListCtrl'
   ).when('/issues',
     templateUrl: '/static/partials/issues/issue_list.html'
     controller: 'IssueListCtrl'
@@ -39,6 +52,13 @@ tastypieTransformer = ($http) ->
   ).otherwise(
     redirectTo: '/issues'
   )
+]
+
+@app.controller 'IndexCtrl', ['$scope', ($scope) ->
+]
+
+@app.controller 'ProjectListCtrl', ['$scope', 'Project', ($scope, $resource) ->
+  $scope.projects = $resource.query()
 ]
 
 @app.controller 'IssueListCtrl', ['$scope', 'Issue', ($scope, Issue) ->

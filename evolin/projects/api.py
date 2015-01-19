@@ -12,5 +12,9 @@ class ProjectResource(ModelResource):
         authorization = DjangoAuthorization()
         authentication = SessionAuthentication()
 
+    def dehydrate(self, bundle):
+        bundle.data['owner'] = bundle.obj.owner.username
+        return bundle
+
     def apply_authorization_limits(self, request, object_list):
-        return object_list.filter(user=request.user)
+        return object_list.filter(owner=request.user)

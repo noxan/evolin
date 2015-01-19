@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>Projects</h1>
+</div>
+Search: <input ng-model="query">
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Owner</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="project in projects | filter:query">
+      <td>{{project.name}}</td>
+      <td>{{project.owner}}</td>
+    </tr>
+  </tbody>
+</table>
+

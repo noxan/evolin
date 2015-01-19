@@ -15,6 +15,22 @@
     ]);
   };
 
+  this.services.factory('Project', [
+    '$http', '$resource', function($http, $resource) {
+      return $resource('/api/v1/projects/:projectId/', {}, {
+        query: {
+          cache: true,
+          method: 'GET',
+          transformResponse: tastypieTransformer($http),
+          isArray: true,
+          params: {
+            projectId: ''
+          }
+        }
+      });
+    }
+  ]);
+
   this.services.factory('Issue', [
     '$http', '$resource', function($http, $resource) {
       return $resource('/api/v1/issues/:issueId/', {}, {
@@ -36,8 +52,11 @@
   this.app.config([
     '$routeProvider', function($routeProvider) {
       return $routeProvider.when('/', {
-        templateUrl: '',
-        controller: ''
+        templateUrl: '/static/partials/common/index.html',
+        controller: 'IndexCtrl'
+      }).when('/projects', {
+        templateUrl: '/static/partials/projects/project_list.html',
+        controller: 'ProjectListCtrl'
       }).when('/issues', {
         templateUrl: '/static/partials/issues/issue_list.html',
         controller: 'IssueListCtrl'
@@ -47,6 +66,14 @@
       }).otherwise({
         redirectTo: '/issues'
       });
+    }
+  ]);
+
+  this.app.controller('IndexCtrl', ['$scope', function($scope) {}]);
+
+  this.app.controller('ProjectListCtrl', [
+    '$scope', 'Project', function($scope, $resource) {
+      return $scope.projects = $resource.query();
     }
   ]);
 
